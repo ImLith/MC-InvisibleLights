@@ -3,7 +3,6 @@ package com.lith.invisiblelights.events;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
-import org.bukkit.Particle.DustOptions;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Levelled;
@@ -18,15 +17,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import com.lith.invisiblelights.Plugin;
+import com.lith.invisiblelights.Static.MessageKey;
+import com.lith.invisiblelights.config.ConfigManager;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import static org.bukkit.Color.fromRGB;
 
 public class PlayerEvents implements Listener {
-    private static final int SEARCH_RADIUS = 25;
     private final Map<UUID, BukkitTask> particleTasks = new HashMap<>();
-    private static final DustOptions DUST_OPTIONS = new DustOptions(fromRGB(255, 0, 0), 1);
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -53,7 +51,8 @@ public class PlayerEvents implements Listener {
         level.setLevel(newLightLevel);
         clickedBlock.setBlockData(level, true);
 
-        player.sendMessage("New level: " + newLightLevel);
+        player.sendMessage(ConfigManager.messages.increaseLightLevel
+                .replace(MessageKey.LIGHT, String.valueOf(newLightLevel)));
     }
 
     @EventHandler
@@ -97,13 +96,14 @@ public class PlayerEvents implements Listener {
     private void spawnParticlesAroundPlayer(Player player) {
         Location playerLocation = player.getLocation();
 
+        int searchRadius = ConfigManager.configs.searchRadius;
         int playerX = playerLocation.getBlockX();
         int playerY = playerLocation.getBlockY();
         int playerZ = playerLocation.getBlockZ();
 
-        for (int x = playerX - SEARCH_RADIUS; x <= playerX + SEARCH_RADIUS; x++) {
-            for (int y = playerY - SEARCH_RADIUS; y <= playerY + SEARCH_RADIUS; y++) {
-                for (int z = playerZ - SEARCH_RADIUS; z <= playerZ + SEARCH_RADIUS; z++) {
+        for (int x = playerX - searchRadius; x <= playerX + searchRadius; x++) {
+            for (int y = playerY - searchRadius; y <= playerY + searchRadius; y++) {
+                for (int z = playerZ - searchRadius; z <= playerZ + searchRadius; z++) {
                     Location blockLocation = new Location(player.getWorld(), x, y, z);
                     Block block = blockLocation.getBlock();
 
@@ -111,7 +111,7 @@ public class PlayerEvents implements Listener {
                         player.spawnParticle(
                                 Particle.REDSTONE,
                                 blockLocation.add(0.5, 0.5, 0.5), 10, 0.5, 0.5, 0.5, 1,
-                                DUST_OPTIONS);
+                                ConfigManager.configs.dustOptions);
                     }
                 }
             }

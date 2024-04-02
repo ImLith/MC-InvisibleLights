@@ -1,0 +1,14 @@
+# Search radius around player for invisible lights.
+# large number means more search so will require more resources
+search_radius: 25
+
+# RGB value
+particlecolor:
+  red: 255
+  green: 0
+  blue: 0
+
+# Supports color codes. Full list here: https://htmlcolorcodes.com/minecraft-color-codes/
+# Supports unicodes (including custom). Write \\uXXXX and it will parsed
+messages:
+  increased_light_level: "New light level: %light%"
