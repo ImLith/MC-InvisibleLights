@@ -1,6 +1,6 @@
 package com.lith.invisiblelights;
 
-import com.lith.invisiblelights.events.PlayerInteract;
+import com.lith.invisiblelights.events.PlayerEvents;
 import com.lith.lithcore.abstractClasses.MainPlugin;
 import com.lith.lithcore.abstractClasses.PluginConfigManager;
 
@@ -20,6 +20,6 @@ public class Plugin extends MainPlugin<PluginConfigManager> {
     }
 
     private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
+        getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
     }
 }
