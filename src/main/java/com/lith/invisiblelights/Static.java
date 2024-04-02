@@ -1,7 +1,6 @@
 package com.lith.invisiblelights;
 
 import java.util.logging.Logger;
-
 import com.lith.lithcore.abstractClasses.AbstractConfigKey;
 
 public class Static {

@@ -29,22 +29,26 @@ public class PlayerEvents implements Listener {
             return;
         if (clickedBlock.getType() != Material.LIGHT)
             return;
-        if (event.getAction() != Action.RIGHT_CLICK_BLOCK)
-            return;
 
-        BlockData blockData = clickedBlock.getBlockData();
-        if (blockData == null)
-            return;
+        Action playerAction = event.getAction();
+        if (playerAction == Action.LEFT_CLICK_BLOCK) {
+            clickedBlock.getWorld().dropItemNaturally(clickedBlock.getLocation(), new ItemStack(Material.LIGHT));
+            clickedBlock.setType(Material.AIR);
+        } else if (playerAction == Action.RIGHT_CLICK_BLOCK) {
+            BlockData blockData = clickedBlock.getBlockData();
+            if (blockData == null)
+                return;
 
-        final Levelled level = (Levelled) clickedBlock.getBlockData();
-        final int lightLevel = blockData.getLightEmission();
-        final int newLightLevel = lightLevel < 15 ? lightLevel + 1 : 1;
+            final Levelled level = (Levelled) clickedBlock.getBlockData();
+            final int lightLevel = blockData.getLightEmission();
+            final int newLightLevel = lightLevel < 15 ? lightLevel + 1 : 1;
 
-        level.setLevel(newLightLevel);
-        clickedBlock.setBlockData(level, true);
+            level.setLevel(newLightLevel);
+            clickedBlock.setBlockData(level, true);
 
-        player.sendActionBar(ConfigManager.messages.increaseLightLevel
-                .replace(MessageKey.LIGHT, String.valueOf(newLightLevel)));
+            player.sendActionBar(ConfigManager.messages.increaseLightLevel
+                    .replace(MessageKey.LIGHT, String.valueOf(newLightLevel)));
+        }
     }
 
     @EventHandler
