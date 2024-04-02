@@ -26,6 +26,7 @@ import java.util.UUID;
 public class PlayerEvents implements Listener {
     private final Map<UUID, BukkitTask> particleTasks = new HashMap<>();
 
+    @SuppressWarnings("deprecation")
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
         Block clickedBlock = event.getClickedBlock();
@@ -51,7 +52,7 @@ public class PlayerEvents implements Listener {
         level.setLevel(newLightLevel);
         clickedBlock.setBlockData(level, true);
 
-        player.sendMessage(ConfigManager.messages.increaseLightLevel
+        player.sendActionBar(ConfigManager.messages.increaseLightLevel
                 .replace(MessageKey.LIGHT, String.valueOf(newLightLevel)));
     }
 
