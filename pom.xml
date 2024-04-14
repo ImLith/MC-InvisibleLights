@@ -3,7 +3,7 @@
 
   <groupId>com.lith.invisiblelights</groupId>
   <artifactId>invisiblelights</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
 
   <name>InvisibleLights</name>
   <packaging>jar</packaging>
