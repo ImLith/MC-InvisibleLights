@@ -15,7 +15,7 @@ public class Static {
             public static final String BLUE = setKey("blue");
         }
 
-        public static final class Message extends AbstractConfigKey {
+        public static final class Messages extends AbstractConfigKey {
             public static final String INCREASED_LIGHT_LEVEL = setKey("increased_light_level");
         }
     }

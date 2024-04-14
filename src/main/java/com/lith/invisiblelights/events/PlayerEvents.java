@@ -75,7 +75,7 @@ public class PlayerEvents implements Listener {
             return;
 
         final Levelled level = (Levelled) block.getBlockData();
-        final int newLightLevel = LightUtil.setLevel(blockData.getLightEmission() + 1, 1);
+        final int newLightLevel = LightUtil.setLevel(blockData.getLightEmission() + 1, 1, true);
 
         level.setLevel(newLightLevel);
         block.setBlockData(level, true);

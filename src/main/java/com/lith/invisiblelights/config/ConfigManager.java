@@ -23,7 +23,7 @@ public class ConfigManager extends AbstractConfigManager<Plugin, ConfigManager> 
     }
 
     public final class ConfigMessages {
-        public final String increaseLightLevel = getMessage(ConfigKey.Message.INCREASED_LIGHT_LEVEL);
+        public final String increaseLightLevel = getMessage(ConfigKey.Messages.INCREASED_LIGHT_LEVEL);
     }
 
     public class Configs {
