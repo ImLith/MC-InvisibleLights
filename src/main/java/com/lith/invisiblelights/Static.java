@@ -1,11 +1,10 @@
 package com.lith.invisiblelights;
 
-import java.util.logging.Logger;
 import com.lith.lithcore.abstractClasses.AbstractConfigKey;
+import com.lith.lithcore.classes.Cords3D;
 
 public class Static {
-    public static final String pluginName = "InvisibleLights";
-    public static final Logger log = Logger.getLogger(Static.pluginName);
+    final public static Cords3D particleOffset = new Cords3D(0.5, 0.5, 0.5);
 
     final public static class ConfigKeys {
         public static final String SEARCH_RADIUS = "search_radius";

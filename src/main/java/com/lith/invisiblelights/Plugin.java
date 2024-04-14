@@ -2,29 +2,21 @@ package com.lith.invisiblelights;
 
 import com.lith.invisiblelights.config.ConfigManager;
 import com.lith.invisiblelights.events.PlayerEvents;
-import com.lith.lithcore.abstractClasses.MainPlugin;
+import com.lith.lithcore.abstractClasses.AbstractPlugin;
 
-public class Plugin extends MainPlugin<ConfigManager> {
+public class Plugin extends AbstractPlugin<Plugin, ConfigManager> {
     public static Plugin plugin;
 
+    @Override
     public void onEnable() {
-        Plugin.plugin = this;
+        plugin = this;
+        configs = new ConfigManager(this);
 
-        registerConfigs();
-        registerEvents();
-
-        Static.log.info("Plugin enabled");
+        super.onEnable();
     }
 
-    public void onDisable() {
-        Static.log.info("Plugin disabled");
-    }
-
-    private void registerConfigs() {
-        new ConfigManager(this);
-    }
-
-    private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
+    @Override
+    protected void registerEvents() {
+        registerEvent(new PlayerEvents(this));
     }
 }
