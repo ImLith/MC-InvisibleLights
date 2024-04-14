@@ -2,7 +2,7 @@ package com.lith.invisiblelights.config;
 
 import org.bukkit.Particle.DustOptions;
 import com.lith.invisiblelights.Plugin;
-import com.lith.invisiblelights.Static.ConfigKeys;
+import com.lith.invisiblelights.Static.ConfigKey;
 import com.lith.lithcore.abstractClasses.AbstractConfigManager;
 import static org.bukkit.Color.fromRGB;
 
@@ -23,18 +23,18 @@ public class ConfigManager extends AbstractConfigManager<Plugin, ConfigManager> 
     }
 
     public final class ConfigMessages {
-        public final String increaseLightLevel = getMessage(ConfigKeys.Messages.INCREASED_LIGHT_LEVEL);
+        public final String increaseLightLevel = getMessage(ConfigKey.Message.INCREASED_LIGHT_LEVEL);
     }
 
     public class Configs {
-        public final int searchRadius = config.getInt(ConfigKeys.SEARCH_RADIUS);
+        public final int searchRadius = config.getInt(ConfigKey.SEARCH_RADIUS);
         public final DustOptions dustOptions;
 
         public Configs() {
             dustOptions = new DustOptions(fromRGB(
-                    getRgbValue(ConfigKeys.ParticleColor.RED),
-                    getRgbValue(ConfigKeys.ParticleColor.GREEN),
-                    getRgbValue(ConfigKeys.ParticleColor.BLUE)),
+                    getRgbValue(ConfigKey.ParticleColor.RED),
+                    getRgbValue(ConfigKey.ParticleColor.GREEN),
+                    getRgbValue(ConfigKey.ParticleColor.BLUE)),
                     1);
         }
     }
