@@ -1,7 +1,7 @@
 name: InvisibleLights
 main: com.lith.invisiblelights.Plugin
 
-version: 0.0.1
+version: 0.0.2
 api-version: 1.20
 
 description: A MineCraft plugin for TPA
@@ -10,3 +10,14 @@ website: https://github.com/ImLith/MC-Tpa
 
 depend: [LithCore]
 softdepend: []
+
+commands:
+  lightReload:
+    description: Reload configs
+    usage: /<command>
+    permission: invislight.reload
+
+permissions:
+  invislight.reload:
+    description: Reload configs
+    default: op

@@ -1,30 +1,25 @@
 package com.lith.invisiblelights;
 
+import com.lith.invisiblelights.Static.Commands;
 import com.lith.invisiblelights.config.ConfigManager;
-import com.lith.invisiblelights.events.PlayerEvents;
-import com.lith.lithcore.abstractClasses.MainPlugin;
+import com.lith.invisiblelights.events.ParticleTaskEvent;
+import com.lith.lithcore.abstractClasses.AbstractPlugin;
+import com.lith.lithcore.helpers.ReloadConfigCmd;
 
-public class Plugin extends MainPlugin<ConfigManager> {
-    public static Plugin plugin;
-
+public class Plugin extends AbstractPlugin<Plugin, ConfigManager> {
+    @Override
     public void onEnable() {
-        Plugin.plugin = this;
-
-        registerConfigs();
-        registerEvents();
-
-        Static.log.info("Plugin enabled");
+        configs = new ConfigManager(this);
+        super.onEnable();
     }
 
-    public void onDisable() {
-        Static.log.info("Plugin disabled");
+    @Override
+    protected void registerEvents() {
+        registerEvent(new ParticleTaskEvent(this));
     }
 
-    private void registerConfigs() {
-        new ConfigManager(this);
-    }
-
-    private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
+    @Override
+    protected void registerCommands() {
+        new ReloadConfigCmd<Plugin>(this, Commands.Permission.RELOAD, Commands.Name.RELOAD);
     }
 }
