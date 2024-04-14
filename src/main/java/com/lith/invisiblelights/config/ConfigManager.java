@@ -2,6 +2,7 @@ package com.lith.invisiblelights.config;
 
 import org.bukkit.Particle.DustOptions;
 import com.lith.invisiblelights.Plugin;
+import com.lith.invisiblelights.Static;
 import com.lith.invisiblelights.Static.ConfigKey;
 import com.lith.lithcore.abstractClasses.AbstractConfigManager;
 import static org.bukkit.Color.fromRGB;
@@ -27,7 +28,7 @@ public class ConfigManager extends AbstractConfigManager<Plugin, ConfigManager> 
     }
 
     public class Configs {
-        public final int searchRadius = config.getInt(ConfigKey.SEARCH_RADIUS);
+        public final int searchRadius = config.getInt(ConfigKey.SEARCH_RADIUS, Static.DEFAULT_SEARCH_RADIUS);
         public final DustOptions dustOptions;
 
         public Configs() {
