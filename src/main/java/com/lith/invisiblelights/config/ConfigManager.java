@@ -8,8 +8,8 @@ import com.lith.lithcore.abstractClasses.AbstractConfigManager;
 import static org.bukkit.Color.fromRGB;
 
 public class ConfigManager extends AbstractConfigManager<Plugin, ConfigManager> {
-    public static ConfigMessages messages;
-    public static Configs configs;
+    public ConfigMessages messages;
+    public Configs configs;
 
     public ConfigManager(final Plugin plugin) {
         super(plugin);

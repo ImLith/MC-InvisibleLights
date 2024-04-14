@@ -21,7 +21,6 @@ import org.bukkit.scheduler.BukkitTask;
 import com.lith.invisiblelights.Plugin;
 import com.lith.invisiblelights.Static;
 import com.lith.invisiblelights.Static.MessageKey;
-import com.lith.invisiblelights.config.ConfigManager;
 import com.lith.lithcore.utils.LightUtil;
 import com.lith.lithcore.utils.ParticleUtil;
 import net.kyori.adventure.text.Component;
@@ -81,7 +80,7 @@ public class ParticleTaskEvent implements Listener {
         block.setBlockData(level, true);
 
         player.sendActionBar(Component.text(
-                ConfigManager.messages.increaseLightLevel
+                plugin.configs.messages.increaseLightLevel
                         .replace(MessageKey.LIGHT, String.valueOf(newLightLevel))));
     }
 
@@ -99,8 +98,8 @@ public class ParticleTaskEvent implements Listener {
         BukkitTask task = new BukkitRunnable() {
             @Override
             public void run() {
-                ParticleUtil.spawnOnBlockAroundPlayer(player, ConfigManager.configs.searchRadius, Material.LIGHT,
-                        Particle.REDSTONE, 10, Static.particleOffset, 1, ConfigManager.configs.dustOptions);
+                ParticleUtil.spawnOnBlockAroundPlayer(player, plugin.configs.configs.searchRadius, Material.LIGHT,
+                        Particle.REDSTONE, 10, Static.particleOffset, 1, plugin.configs.configs.dustOptions);
             }
         }.runTaskTimer(plugin, 0, 10);
 
