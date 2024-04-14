@@ -6,6 +6,8 @@ import com.lith.lithcore.classes.Cords3D;
 public class Static {
     public static final Cords3D particleOffset = new Cords3D(0.5, 0.5, 0.5);
 
+    public static final int DEFAULT_SEARCH_RADIUS = 25;
+
     public static final class ConfigKey {
         public static final String SEARCH_RADIUS = "search_radius";
 
