@@ -23,4 +23,15 @@ public class Static {
     public static final class MessageKey {
         public static final String LIGHT = "%light%";
     }
+
+    public final static class Commands {
+        public final static class Name {
+            public final static String RELOAD = "lightReload";
+        }
+
+        public final static class Permission {
+            private final static String PREFIX = "invislight.";
+            public final static String RELOAD = PREFIX + "reload";
+        }
+    }
 }

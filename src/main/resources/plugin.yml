@@ -10,3 +10,14 @@ website: https://github.com/ImLith/MC-Tpa
 
 depend: [LithCore]
 softdepend: []
+
+commands:
+  lightReload:
+    description: Reload configs
+    usage: /<command>
+    permission: invislight.reload
+
+permissions:
+  invislight.reload:
+    description: Reload configs
+    default: op

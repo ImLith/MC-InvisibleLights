@@ -26,11 +26,11 @@ import com.lith.lithcore.utils.LightUtil;
 import com.lith.lithcore.utils.ParticleUtil;
 import net.kyori.adventure.text.Component;
 
-public class PlayerEvents implements Listener {
+public class ParticleTaskEvent implements Listener {
     private final Map<UUID, BukkitTask> particleTasks;
     private final Plugin plugin;
 
-    public PlayerEvents(Plugin plugin) {
+    public ParticleTaskEvent(Plugin plugin) {
         this.plugin = plugin;
         this.particleTasks = new HashMap<>();
     }
